@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  
+  
+  
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -8,7 +11,7 @@ Rails.application.routes.draw do
   
   namespace :admin do
     root to: 'homes#top'
-    resources :products, except:[:destroy]
+    resources :items, except:[:destroy]
     resources :genres, only:[:index, :edit, :create, :update]
     resources :customers, only:[:index, :show, :edit, :update]
     resources :orders, only:[:index, :show, :update]
@@ -40,10 +43,6 @@ Rails.application.routes.draw do
       end
     end
     resources :deliveries, except:[:new, :show]
-    
-     # 検索機能
-    get '/genre_search', to: "searches#genre_search"
-    get '/product_search', to: "searches#product_search"
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

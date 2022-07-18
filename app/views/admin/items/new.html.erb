@@ -1,2 +1,19 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<div class="text-danger">
+<% if @item.errors.any? %>
+   <span class="h4"><%= @item.errors.count %>errors prohibited this obj from being saved:</span>
+  <% @item.errors.full_messages.each do |message| %><br>
+     ・<%= message %>
+  <% end %>
+<% end %>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-md-5">
+      <h2 class="mb-5">商品新規登録</h2>
+        <%= form_with model: @item, url: admin_items_path, local: true do |f| %>
+          <%= render 'form_item', f: f %>
+          <%= f.submit '新規登録', class: "btn btn-success btn-lg mx-auto d-block" %>
+        <% end %>
+    </div>
+  </div>
+</div>
