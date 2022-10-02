@@ -1,2 +1,56 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+
+ <div class="col-9">
+   <br>
+  <div class="row">
+    <h3 class="bg-light col-lg-6"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h3>
+  </div>
+  <br>
+  <div class="row">
+    <label for="image" class="col-lg-3">会員ID</label>
+    <%= @customer.id %>
+  </div>
+  <%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
+
+  <div class="form-group row">
+    <label for="text" class="col-lg-3">氏名</label>
+    <%= f.text_field :last_name, :class => "col-lg-3 mr-5" %>
+    <%= f.text_field :first_name, :class => "col-lg-3" %>
+  </div>
+  <div class="form-group row">
+    <label for="text" class="col-lg-3">フリガナ</label>
+    <%= f.text_field :last_name_kana, :class => "col-lg-3 mr-5" %>
+    <%= f.text_field :first_name_kana, :class => "col-lg-3" %>
+  </div>
+  <div class="form-group row">
+    <label for="text" class="col-lg-3">郵便番号</label>
+    <%= f.text_field :postal_code, :class => "col-lg-3" %>
+  </div>
+  <div class="form-group row">
+    <label for="text" class="col-lg-3">住所</label>
+    <%= f.text_field :address, :class => "col-lg-8" %>
+  </div>
+  <div class="form-group row">
+    <label for="text" class="col-lg-3">電話番号</label>
+    <%= f.text_field :telephone_number, :class => "col-lg-3" %>
+  </div>
+  <div class="form-group row">
+    <label for="text" class="col-lg-3">メールアドレス</label>
+    <%= f.text_field :email, :class => "col-lg-3" %>
+  </div>
+  <div class="form-group row">
+    <label for="is_deleted" class="col-lg-3">会員ステータス</label>
+    <%= f.radio_button :is_deleted, "false" %>
+    <%= f.label :is_deleted, "有効", :class => "col-lg-2"  %>
+    <%= f.radio_button :is_deleted, "true" %>
+    <%= f.label :is_deleted, "退会", :class => "col-og-2" %>
+  </div>
+  <div class="form-group row">
+    <div class="col-lg-3"></div>
+    <%= f.submit "変更を保存", :class => "btn btn-success col-lg-2 mb-5 mt-3" %>
+  </div>
+  <% end %>
+  </div>
+</div>
+</div>

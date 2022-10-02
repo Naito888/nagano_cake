@@ -1,19 +1,45 @@
-<div class="text-danger">
-<% if @item.errors.any? %>
-   <span class="h4"><%= @item.errors.count %>errors prohibited this obj from being saved:</span>
-  <% @item.errors.full_messages.each do |message| %><br>
-     ・<%= message %>
-  <% end %>
-<% end %>
-</div>
 <div class="container">
   <div class="row">
-    <div class="col-md-5 mx-auto">
-      <h2 class="mb-5">商品編集</h2>
-        <%= form_with model: @item, url: admin_item_path, local: true do |f| %>
-          <%= render 'form_item', f: f %>
-          <%= f.submit '編集する', class: "btn btn-success btn-lg pull-right d-block mx-auto" %>
-        <% end %>
-    </div>
+ <div class="col-lg-3"></div>
+ <div class="col-9">
+   <br>
+  <div class="row">
+    <h3 class="bg-light col-lg-3">商品編集</h3>
   </div>
+  <br>
+  <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
+  <div class="form-group row">
+    <label for="image" class="col-lg-2">商品画像</label>
+    <%= f.file_field :image, accept: "image/*" %>
+  </div>
+  <div class="form-group row">
+    <label for="text" class="col-lg-2">商品名</label>
+    <%= f.text_field :name, :class => "col-lg-4", :placeholder => "商品名" %>
+  </div>
+  <div class="form-group row">
+    <label for="text" class="col-lg-2">商品説明</label>
+    <%= f.text_area :introduction, :class => "col-lg-4" %>
+  </div>
+  <div class="form-group row">
+    <label for="genre" class="col-lg-2">ジャンル</label>
+    <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), :class => "col-lg-4", include_blank: "--選択してください--" %>
+  </div>
+  <div class="form-group row">
+    <label for="price" class="col-lg-2">税抜価格</label>
+    <%= f.text_field :price, :class => "col-lg-4", :placeholder => "1000" %>円
+  </div>
+  <div class="form-group row">
+    <label for="is_active" class="col-lg-2">販売ステータス</label>
+    <%= f.radio_button :is_active, "販売中" %>
+    <%= f.label :is_active, "販売中", :class => "col-lg-2"  %>
+    <%= f.radio_button :is_active, "販売停止中" %>
+    <%= f.label :is_active, "販売停止中", :class => "col-og-2" %>
+  </div>
+  <div class="form-group row">
+    <div class="col-lg-2"></div>
+    <%= f.submit "変更を保存", :class => "btn btn-success col-lg-2" %>
+  </div>
+  <% end %>
+  </div>
+</div>
 </div>

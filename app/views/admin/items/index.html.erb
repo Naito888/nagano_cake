@@ -1,6 +1,6 @@
 <div class="container my-5">
   <div class="row">
-    <h2>商品一覧画面</h2>
+    <h3 class="bg-light mt-4 ml-5 mb-5 text-center">商品一覧画面</h3>
   </div>
   <div class="row text-right">
     <%= link_to "+", new_admin_item_path, class: "btn btn-lg rounded-circle text-right ml-auto shadow-sm" %>
@@ -9,7 +9,7 @@
   <div class="row mt-1">
     <table class="table table-hover text-center">
       <thead>
-        <tr>
+        <tr class="table-secondary text-algin-left">
           <th>商品ID</th>
           <th>商品名</th>
           <th>税抜き価格</th>
@@ -38,6 +38,8 @@
     </table>
   </div>
 
-
+<ul class="pagination">
+<%= paginate @items %>
+</ul>
 
 </div>
