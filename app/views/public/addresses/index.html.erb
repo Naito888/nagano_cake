@@ -1,2 +1,47 @@
-<h1>Public::Addresses#index</h1>
-<p>Find me in app/views/public/addresses/index.html.erb</p>
+<div class="container">
+  <div class="row mt-4 mb-5">
+    <div class="col-1"></div>
+    <h3 class="bg-light col-3 text-align-center">配送先登録/一覧</h3>
+  </div>
+  <%= form_with model: @address, url: addresses_path do |f| %>
+  <div class="row mb-1">
+    <div class="col-3">郵便番号（ハイフンなし）</div>
+      <%= f.text_field :postal_code,:class => "col-3", :placeholder => "0000000" %>
+  </div>
+  <div class="row mb-1">
+    <div class="col-3">住所</div>
+      <%= f.text_field :address,:class => "col-5", :placeholder => "東京都渋谷区代々木神園町０−０" %>
+  </div>
+  <div class="row mb-5">
+    <div class="col-3">宛名</div>
+      <%= f.text_field :name,:class => "col-3", :placeholder => "令和道子" %>
+      <div class="col-2"></div>
+      <%= f.submit "新規登録", :class => "btn btn-success" %>
+  </div>
+  <% end %>
+</div>
+<div class="container">
+<div class="row-12 mt-5 mb-5 mx-auto">
+
+<table class="table-bordered col-8">
+  <thead>
+      <tr class="table-secondary text-algin-left">
+        <th>郵便番号</th>
+        <th style="width: 30%">住所</th>
+        <th>宛名</th>
+        <th style="width: 30%"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @addresses.each do |address| %>
+      <td><%= address.postal_code %></td>
+      <td><%= address.address %></td>
+      <td><%= address.name %></td>
+      <td><%= link_to "編集する", edit_address_path(address.id), :class => "btn btn-sm btn-success mr-3 mt-2 ml-4 mb-2" %>
+      <%= link_to "削除する", address_path(address.id), method: :delete, :class => "btn btn-sm btn-danger" %></td>
+    </tbody>
+      <% end %>
+</table>
+</div>
+</div>

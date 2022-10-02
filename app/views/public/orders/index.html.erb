@@ -1,2 +1,36 @@
-<h1>Public::Orders#index</h1>
-<p>Find me in app/views/public/orders/index.html.erb</p>
+<div class="container mx-auto">
+  <div class="row">
+    <div class="col-1"></div>
+    <h3 class="bg-light col-3 text-center mt-5 mb-5">注文履歴一覧</h3>
+    </div>
+  <div class="row">
+    <table class="table-bordered col-12 w-100 mb-5">
+  <thead>
+      <tr class="table-secondary text-algin-left">
+        <th style="width: 15%">注文日</th>
+        <th style="width: 35%">配送先</th>
+        <th style="width: 15%">注文商品</th>
+        <th style="width: 10%">支払い金額</th>
+        <th style="width: 15%">ステータス</th>
+        <th style="width: 10%">注文詳細</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @orders.each do |order| %>
+      <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+      <td><%= order.postal_code %><br><%= order.address %><br><%= order.name %></td>
+      <td><% order.order_details.each do  |order_item| %>
+      <%= order_item.item.name %><% end %></td>
+      <td><%= order.total_payment.to_s(:delimited) %></td>
+      <td><%= order.status_i18n %></td>
+      <td><%= link_to "表示する", order_path(order.id), :class => "btn btn-primary ml-2" %></td>
+    </tbody>
+      <% end %>
+</table>
+  </div>
+</div>
+
+<ul class="pagination">
+<%= paginate @orders %>
+</ul>
