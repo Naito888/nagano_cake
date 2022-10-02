@@ -1,6 +1,48 @@
- ja:
-    enums:
-      order:
-        payment_method:
-          credit_card: "クレジットカード"
-          transfer: "銀行振込"
+ja:
+ enums:
+  order:
+   payment_method:
+    credit_card: "クレジットカード"
+    transfer: "銀行振込"
+
+   status:
+    waiting_for_deposit: "入金待ち"
+    payment_confirmation: "入金確認"
+    production: "製作中"
+    ready_to_ship: "発送準備中"
+    shipped: "発送済み"
+
+  order_detail:
+   making_status:
+    cannot_be_manufactured: "製作不可"
+    waiting_for_production: "製作待ち"
+    production: "製作中"
+    production_completed: "製作完了"
+
+  item:
+   is_active:
+    sale: "販売中"
+    stop_selling: "販売停止中"
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "バリデーションに失敗しました: %{errors}"
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
+    models:
+      task: タスク
+    attributes:
+      task:
+      id: ID
+      name: 名称
+      description: 詳しい説明
+      created_at: 登録日時
+      updated_at: 更新日時
+    helpers:
+      select:
+        prompt: 選択してください
+      submit:
+        create: 登録する
+        submit: 保存する
+        update: 更新する

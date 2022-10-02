@@ -1,2 +1,43 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container">
+
+   <div class="top-visual">
+      <div style="text-align: center;">
+        <%= image_tag "about.jpg", class: "top-visual_image" %>
+      <p class="top-visual_content">
+        ようこそながのCAKEへ！　<br>
+        このサイトは、ケーキ販売のECサイトになります。　<br>
+        会員ではない方も商品の閲覧はできますが、 <br>
+        購入には会員登録が必要になります。 <br>
+      </p>
+      </div>
+    </div>
+
+  <!--新着商品-->
+  <div class="row mt-4">
+    <section class="new-items col-md-12">
+      <h3><strong>新着商品</strong></h3>
+      <div class="row">
+        <% @items.each do |item| %>
+          <div class="col-3">
+            <div class="card border border-0">
+              <%= link_to item_path(item) do %>
+                <% if item.image.attached? %>
+                  <%= image_tag item.image, size: "200x200" %>
+                <% else %>
+                  <%= image_tag 'no_image', size: "200x200" %>
+                <% end %>
+              <% end %>
+              <div class="card-body">
+                <h6 class="card-title"><strong><%= item.name %></strong></h6>
+                <p class="card-text">￥<%= item.price %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  </div>
+  <div class="col-md-12 text-right">
+    <%= link_to "全ての商品を見る>", items_path %>
+  </div>
+</div>
