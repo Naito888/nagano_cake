@@ -1,24 +1,53 @@
-# README
+# nagano_cake
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイト
 
-Things you may want to cover:
+##主な機能（顧客）
 
-* Ruby version
+* ログイン機能
 
-* System dependencies
+* ログアウト機能
 
-* Configuration
+* 商品一覧表示機能
 
-* Database creation
+* 商品詳細情報表示機能
 
-* Database initialization
+* カート追加機能
 
-* How to run the test suite
+* カート一覧機能
 
-* Services (job queues, cache servers, search engines, etc.)
+* カート編集機能
 
-* Deployment instructions
+* 注文機能
 
-* ...
+* 会員情報編集機能
+
+* 退会機能
+
+* 配送先追加・編集機能
+
+* 注文履歴一覧表示機能
+
+* 注文履歴詳細表示機能
+
+##主な機能（管理者）
+
+* ログイン機能
+
+* ログアウト機能
+
+* 注文履歴一覧表示機能
+
+* 注文履歴詳細表示機能
+
+* 顧客一覧表示機能
+
+* 顧客詳細情報表示機能
+
+* 商品一覧表示機能
+
+* 商品詳細情報表示機能 
+
+* 商品情報変更機能
+
+* ジャンル設定機能 
